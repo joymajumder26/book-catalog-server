@@ -80,6 +80,25 @@ const run = async () => {
       res.send(result);
     });
 
+    app.put('/book/edit/:id',async (req, res) => {
+      const id = req.params.id;
+      const updatedBook = req.body; // Assuming you send the updated book data in the request body.
+  
+      const result = await productCollection.updateOne(
+        { _id: ObjectId(id) },
+        { $set: updatedBook } // Use $set to update the fields of the book
+      );
+  
+      if (result.modifiedCount !== 1) {
+        console.log('Book not found or not updated');
+        res.status(404).json({ error: 'Book not found or not updated' });
+        return;
+      }
+  
+      console.log('Book updated successfully');
+      res.json({ message: 'Book updated successfully' });
+    });
+
     app.post('/comment/:id', async (req, res) => {
       const productId = req.params.id;
       const comment = req.body.comment;
