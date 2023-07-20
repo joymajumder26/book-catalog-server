@@ -16,6 +16,14 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
+  
+    client.connect();
+    console.log('Connected to the database!');
+    
+ 
+  
+
+
 const run = async () => {
   try {
     const db = client.db('book-catalog');
@@ -166,6 +174,10 @@ run().catch((err) => console.log(err));
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+app.get('/check', (req, res) => {
+  res.send('Hello World! Books');
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
