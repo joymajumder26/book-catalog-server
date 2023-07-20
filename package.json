@@ -2,6 +2,9 @@
   "name": "express-mongodb-vercel",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node":"16.x"
+  },
   "license": "MIT",
   "author": "Mir Hussain",
   "scripts": {

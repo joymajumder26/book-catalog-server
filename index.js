@@ -9,7 +9,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.0qdtr89.mongodb.net/book-catalog?retryWrites=true&w=majority`;
+const uri = 'mongodb+srv://book-catalog:admin1234@cluster0.0qdtr89.mongodb.net/book-catalog?retryWrites=true&w=majority';
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
