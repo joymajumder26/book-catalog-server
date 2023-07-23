@@ -29,12 +29,12 @@ const run = async () => {
     const db = client.db('book-catalog');
     const productCollection = db.collection('book');
 
-    // app.get('/books', async (req, res) => {
-    //   const cursor = productCollection.find({});
-    //   const product = await cursor.toArray();
+    app.get('/books', async (req, res) => {
+      const cursor = productCollection.find({});
+      const product = await cursor.toArray();
 
-    //   res.send({ status: true, data: product });
-    // });
+      res.send({ status: true, data: product });
+    });
 
     app.post('/create-book', async (req, res) => {
       const book = req.body;
@@ -53,30 +53,30 @@ const run = async () => {
       // console.log(result);
       res.send(result);
     });
-    app.get('/books', (req, res) => {
-      // Get search query parameters from request query string
-      const { title, author, genre } = req.query;
+    // app.get('/books', (req, res) => {
+    //   // Get search query parameters from request query string
+    //   const { title, author, genre } = req.query;
     
-      // Perform search logic based on the provided parameters
-      // Replace this with your actual search implementation using your database or other data source
-      const filteredBooks = books.filter(book => {
-        let match = true;
+    //   // Perform search logic based on the provided parameters
+    //   // Replace this with your actual search implementation using your database or other data source
+    //   const filteredBooks = books.filter(book => {
+    //     let match = true;
     
-        if (title && !book.title.toLowerCase().includes(title.toLowerCase())) {
-          match = false;
-        }
-        if (author && !book.author.toLowerCase().includes(author.toLowerCase())) {
-          match = false;
-        }
-        if (genre && !book.genre.toLowerCase().includes(genre.toLowerCase())) {
-          match = false;
-        }
+    //     if (title && !book.title.toLowerCase().includes(title.toLowerCase())) {
+    //       match = false;
+    //     }
+    //     if (author && !book.author.toLowerCase().includes(author.toLowerCase())) {
+    //       match = false;
+    //     }
+    //     if (genre && !book.genre.toLowerCase().includes(genre.toLowerCase())) {
+    //       match = false;
+    //     }
     
-        return match;
-      });
+    //     return match;
+    //   });
     
-      res.json(filteredBooks);
-    });
+    //   res.json(filteredBooks);
+    // });
     
 
     app.delete('/book/:id', async (req, res) => {
