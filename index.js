@@ -29,12 +29,12 @@ const run = async () => {
     const db = client.db('book-catalog');
     const productCollection = db.collection('book');
 
-    app.get('/books', async (req, res) => {
-      const cursor = productCollection.find({});
-      const product = await cursor.toArray();
+    // app.get('/books', async (req, res) => {
+    //   const cursor = productCollection.find({});
+    //   const product = await cursor.toArray();
 
-      res.send({ status: true, data: product });
-    });
+    //   res.send({ status: true, data: product });
+    // });
 
     app.post('/create-book', async (req, res) => {
       const book = req.body;
